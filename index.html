@@ -281,7 +281,6 @@
         <div id="start-screen" class="start-screen">
             <h1>🧠 Team Quiz Time!</h1>
             <p>Test your knowledge and compete with your colleagues</p>
-            <input type="text" id="player-name" class="name-input" placeholder="Enter your name" maxlength="20">
             <br>
             <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
         </div>
@@ -323,7 +322,6 @@
         
         let currentQuestion = 0;
         let score = 0;
-        let playerName = '';
         let userAnswers = []; // Track user's answers for results breakdown
         
         // Load quiz data from external JSON file
@@ -359,7 +357,6 @@
                 return;
             }
             
-            playerName = document.getElementById('player-name').value.trim() || 'Anonymous';
             document.getElementById('start-screen').style.display = 'none';
             document.getElementById('quiz-screen').style.display = 'block';
             
@@ -493,7 +490,6 @@
         function restart() {
             document.getElementById('results-screen').style.display = 'none';
             document.getElementById('start-screen').style.display = 'block';
-            document.getElementById('player-name').value = playerName;
         }
         
         // Initialize on load
