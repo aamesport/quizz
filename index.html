@@ -342,6 +342,45 @@
             else message = "📚 Time to hit the books!";
             
             document.getElementById('score-message').textContent = message;
+            
+            // Show detailed results
+            const detailsContainer = document.getElementById('results-details') || createDetailsContainer();
+            detailsContainer.innerHTML = '';
+            
+            quizData.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-result';
+                
+                const selectedAnswer = userAnswers[index];
+                const correctAnswer = question.correct;
+                const isCorrect = selectedAnswer === correctAnswer;
+                
+                questionDiv.innerHTML = `
+                    <div class="question-title">${index + 1}. ${question.question}</div>
+                    <div class="answer-row ${isCorrect ? 'correct' : 'incorrect'}">
+                        <span class="answer-label">Your answer:</span>
+                        <span class="answer-text">${question.answers[selectedAnswer]}</span>
+                        <span class="answer-icon">${isCorrect ? '✅' : '❌'}</span>
+                    </div>
+                    ${!isCorrect ? `
+                        <div class="answer-row correct">
+                            <span class="answer-label">Correct answer:</span>
+                            <span class="answer-text">${question.answers[correctAnswer]}</span>
+                            <span class="answer-icon">✅</span>
+                        </div>
+                    ` : ''}
+                `;
+                
+                detailsContainer.appendChild(questionDiv);
+            });
+        }
+        
+        function createDetailsContainer() {
+            const container = document.createElement('div');
+            container.id = 'results-details';
+            container.className = 'results-details';
+            document.getElementById('results-screen').appendChild(container);
+            return container;
         }
         
         function shareToSlack() {
