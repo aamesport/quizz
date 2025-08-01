@@ -197,6 +197,82 @@
             color: #1a1a2e;
             margin-bottom: 1rem;
         }
+        
+        .results-breakdown {
+            text-align: left;
+            margin-top: 2rem;
+            background: rgba(248, 250, 252, 0.5);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .results-breakdown h3 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .question-result {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #e2e8f0;
+        }
+        
+        .question-result.correct {
+            background: rgba(34, 197, 94, 0.1);
+            border-left-color: #22c55e;
+        }
+        
+        .question-result.incorrect {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: #ef4444;
+        }
+        
+        .question-result-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .question-number {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .result-icon {
+            font-size: 1.2rem;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .answer-line {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .your-answer {
+            color: #64748b;
+        }
+        
+        .correct-answer {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        
+        .incorrect-answer {
+            color: #ef4444;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -205,7 +281,6 @@
         <div id="start-screen" class="start-screen">
             <h1>🧠 Team Quiz Time!</h1>
             <p>Test your knowledge and compete with your colleagues</p>
-            <br>
             <input type="text" id="player-name" class="name-input" placeholder="Enter your name" maxlength="20">
             <br>
             <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
@@ -220,7 +295,7 @@
             <div class="question" id="question-text"></div>
             <div class="answers" id="answers-container"></div>
             
-            <div style="color: #666;">
+            <div class="question-counter">
                 Question <span id="current-q">1</span> of <span id="total-q">10</span>
             </div>
         </div>
@@ -233,6 +308,11 @@
             
             <button class="share-btn" onclick="shareToSlack()">📤 Share to Slack</button>
             <button class="restart-btn" onclick="restart()">🔄 Play Again</button>
+            
+            <div class="results-breakdown">
+                <h3>📝 Detailed Results</h3>
+                <div id="results-list"></div>
+            </div>
         </div>
     </div>
 
@@ -244,6 +324,7 @@
         let currentQuestion = 0;
         let score = 0;
         let playerName = '';
+        let userAnswers = []; // Track user's answers for results breakdown
         
         // Load quiz data from external JSON file
         async function loadQuizData() {
@@ -284,6 +365,7 @@
             
             currentQuestion = 0;
             score = 0;
+            userAnswers = []; // Reset answers array
             showQuestion();
         }
         
@@ -311,8 +393,18 @@
         }
         
         function selectAnswer(selectedIndex) {
-            const correct = quizData[currentQuestion].correct;
-            if (selectedIndex === correct) {
+            const question = quizData[currentQuestion];
+            const correct = question.correct;
+            const isCorrect = selectedIndex === correct;
+            
+            // Store the user's answer
+            userAnswers.push({
+                questionIndex: currentQuestion,
+                selectedAnswer: selectedIndex,
+                isCorrect: isCorrect
+            });
+            
+            if (isCorrect) {
                 score++;
             }
             
@@ -343,44 +435,38 @@
             
             document.getElementById('score-message').textContent = message;
             
-            // list of questions and responses
-            const detailsContainer = document.getElementById('results-details') || createDetailsContainer();
-            detailsContainer.innerHTML = '';
-            
-            quizData.forEach((question, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question-result';
-                
-                const selectedAnswer = userAnswers[index];
-                const correctAnswer = question.correct;
-                const isCorrect = selectedAnswer === correctAnswer;
-                
-                questionDiv.innerHTML = `
-                    <div class="question-title">${index + 1}. ${question.question}</div>
-                    <div class="answer-row ${isCorrect ? 'correct' : 'incorrect'}">
-                        <span class="answer-label">Your answer:</span>
-                        <span class="answer-text">${question.answers[selectedAnswer]}</span>
-                        <span class="answer-icon">${isCorrect ? '✅' : '❌'}</span>
-                    </div>
-                    ${!isCorrect ? `
-                        <div class="answer-row correct">
-                            <span class="answer-label">Correct answer:</span>
-                            <span class="answer-text">${question.answers[correctAnswer]}</span>
-                            <span class="answer-icon">✅</span>
-                        </div>
-                    ` : ''}
-                `;
-                
-                detailsContainer.appendChild(questionDiv);
-            });
+            // Show detailed results breakdown
+            showResultsBreakdown();
         }
         
-        function createDetailsContainer() {
-            const container = document.createElement('div');
-            container.id = 'results-details';
-            container.className = 'results-details';
-            document.getElementById('results-screen').appendChild(container);
-            return container;
+        function showResultsBreakdown() {
+            const resultsContainer = document.getElementById('results-list');
+            resultsContainer.innerHTML = '';
+            
+            userAnswers.forEach((userAnswer, index) => {
+                const question = quizData[userAnswer.questionIndex];
+                const userSelectedText = question.answers[userAnswer.selectedAnswer];
+                const correctAnswerText = question.answers[question.correct];
+                
+                const questionDiv = document.createElement('div');
+                questionDiv.className = `question-result ${userAnswer.isCorrect ? 'correct' : 'incorrect'}`;
+                
+                questionDiv.innerHTML = `
+                    <div class="question-result-header">
+                        <span class="question-number">Q${index + 1}</span>
+                        <span class="result-icon">${userAnswer.isCorrect ? '✅' : '❌'}</span>
+                    </div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="answer-line your-answer">
+                        <strong>Your answer:</strong> <span class="${userAnswer.isCorrect ? 'correct-answer' : 'incorrect-answer'}">${userSelectedText}</span>
+                    </div>
+                    ${!userAnswer.isCorrect ? `<div class="answer-line correct-answer">
+                        <strong>Correct answer:</strong> ${correctAnswerText}
+                    </div>` : ''}
+                `;
+                
+                resultsContainer.appendChild(questionDiv);
+            });
         }
         
         function shareToSlack() {
