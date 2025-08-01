@@ -1,0 +1,55 @@
+{
+  "title": "Team Quiz",
+  "questions": [
+    {
+      "question": "What does 'QA' stand for in software development?",
+      "answers": ["Quality Assurance", "Quick Analysis", "Question Authority", "Quantum Algorithm"],
+      "correct": 0
+    },
+    {
+      "question": "Which testing framework is commonly used with TypeScript?",
+      "answers": ["Mocha", "Jest", "Playwright", "All of the above"],
+      "correct": 3
+    },
+    {
+      "question": "What is Docker primarily used for?",
+      "answers": ["Database management", "Containerization", "Code compilation", "Network security"],
+      "correct": 1
+    },
+    {
+      "question": "In Playwright, what method is used to click an element?",
+      "answers": ["element.tap()", "element.click()", "element.press()", "element.select()"],
+      "correct": 1
+    },
+    {
+      "question": "What does 'CI/CD' stand for?",
+      "answers": ["Continuous Integration/Continuous Deployment", "Code Integration/Code Deployment", "Central Intelligence/Central Data", "Custom Integration/Custom Development"],
+      "correct": 0
+    },
+    {
+      "question": "Which HTTP status code indicates 'Not Found'?",
+      "answers": ["200", "404", "500", "302"],
+      "correct": 1
+    },
+    {
+      "question": "What is the main purpose of Portainer?",
+      "answers": ["Code editing", "Docker management", "Database administration", "File sharing"],
+      "correct": 1
+    },
+    {
+      "question": "In TypeScript, what symbol is used for optional properties?",
+      "answers": ["*", "?", "!", "#"],
+      "correct": 1
+    },
+    {
+      "question": "What does 'API' stand for?",
+      "answers": ["Advanced Programming Interface", "Application Programming Interface", "Automated Programming Integration", "Abstract Programming Implementation"],
+      "correct": 1
+    },
+    {
+      "question": "Which is NOT a valid CSS display property?",
+      "answers": ["flex", "grid", "inline", "stack"],
+      "correct": 3
+    }
+  ]
+} 

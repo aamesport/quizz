@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Quiz</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+        
+        .answers {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .answer-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .answer-btn:hover {
+            background: #e9ecef;
+            border-color: #13bef9;
+        }
+        
+        .progress {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            background: #13bef9;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+        
+        .start-screen h1 {
+            color: #13bef9;
+            margin-bottom: 1rem;
+        }
+        
+        .start-btn, .restart-btn {
+            background: #13bef9;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .start-btn:hover, .restart-btn:hover {
+            background: #0ea5e9;
+        }
+        
+        .results {
+            text-align: center;
+        }
+        
+        .score {
+            font-size: 3rem;
+            color: #13bef9;
+            margin: 1rem 0;
+        }
+        
+        .share-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .name-input {
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="start-screen">
+            <h1>🧠 Team Quiz Time!</h1>
+            <p>Test your knowledge and compete with your colleagues</p>
+            <br>
+            <input type="text" id="player-name" class="name-input" placeholder="Enter your name" maxlength="20">
+            <br>
+            <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+        
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" style="display: none;">
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="question" id="question-text"></div>
+            <div class="answers" id="answers-container"></div>
+            
+            <div style="color: #666;">
+                Question <span id="current-q">1</span> of <span id="total-q">10</span>
+            </div>
+        </div>
+        
+        <!-- Results Screen -->
+        <div id="results-screen" style="display: none;">
+            <h2>🎉 Quiz Complete!</h2>
+            <div class="score" id="final-score">0/10</div>
+            <p id="score-message"></p>
+            
+            <button class="share-btn" onclick="shareToSlack()">📤 Share to Slack</button>
+            <button class="restart-btn" onclick="restart()">🔄 Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data will be loaded from external JSON file
+        let quizData = [];
+        let quizTitle = "Team Quiz";
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let playerName = '';
+        
+        // Load quiz data from external JSON file
+        async function loadQuizData() {
+            try {
+                const response = await fetch('quiz-data.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                
+                if (!data.questions || !Array.isArray(data.questions)) {
+                    throw new Error('Invalid quiz format: missing questions array');
+                }
+                
+                quizData = data.questions;
+                quizTitle = data.title || "Team Quiz";
+                
+                // Update UI
+                document.querySelector('.start-screen h1').textContent = `🧠 ${quizTitle}!`;
+                
+                console.log(`✅ Quiz loaded: ${quizTitle} (${quizData.length} questions)`);
+                
+            } catch (error) {
+                console.error('Failed to load quiz data:', error);
+                alert('❌ Failed to load quiz data. Please check if quiz-data.json is available.');
+            }
+        }
+        
+        function startQuiz() {
+            if (quizData.length === 0) {
+                alert('❌ No quiz data available. Please check if quiz-data.json is loaded.');
+                return;
+            }
+            
+            playerName = document.getElementById('player-name').value.trim() || 'Anonymous';
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'block';
+            
+            currentQuestion = 0;
+            score = 0;
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            const question = quizData[currentQuestion];
+            document.getElementById('question-text').textContent = question.question;
+            document.getElementById('current-q').textContent = currentQuestion + 1;
+            document.getElementById('total-q').textContent = quizData.length;
+            
+            // Update progress bar
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            
+            // Show answers
+            const container = document.getElementById('answers-container');
+            container.innerHTML = '';
+            
+            question.answers.forEach((answer, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn';
+                btn.textContent = answer;
+                btn.onclick = () => selectAnswer(index);
+                container.appendChild(btn);
+            });
+        }
+        
+        function selectAnswer(selectedIndex) {
+            const correct = quizData[currentQuestion].correct;
+            if (selectedIndex === correct) {
+                score++;
+            }
+            
+            currentQuestion++;
+            
+            if (currentQuestion < quizData.length) {
+                setTimeout(showQuestion, 500);
+            } else {
+                setTimeout(showResults, 500);
+            }
+        }
+        
+        function showResults() {
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'block';
+            
+            const scoreText = `${score}/${quizData.length}`;
+            document.getElementById('final-score').textContent = scoreText;
+            
+            const percentage = Math.round((score / quizData.length) * 100);
+            let message = '';
+            
+            if (percentage >= 90) message = "🔥 Absolutely crushing it!";
+            else if (percentage >= 80) message = "💪 Great job!";
+            else if (percentage >= 70) message = "👍 Not bad at all!";
+            else if (percentage >= 60) message = "🤔 Room for improvement";
+            else message = "📚 Time to hit the books!";
+            
+            document.getElementById('score-message').textContent = message;
+        }
+        
+        function shareToSlack() {
+            const scoreText = `${score}/${quizData.length}`;
+            const percentage = Math.round((score / quizData.length) * 100);
+            
+            const message = `🧠 I just scored ${scoreText} (${percentage}%) on the team quiz! Can you beat my score?`;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(message).then(() => {
+                alert('Score copied to clipboard! Paste it in Slack 🚀');
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = message;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Score copied to clipboard! Paste it in Slack 🚀');
+            });
+        }
+        
+        function restart() {
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('start-screen').style.display = 'block';
+            document.getElementById('player-name').value = playerName;
+        }
+        
+        // Initialize on load
+        loadQuizData();
+    </script>
+</body>
+</html>
