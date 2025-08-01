@@ -9,28 +9,49 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #2d1b69 0%, #5a4a8a 50%, #8b7bb8 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #333;
+            position: relative;
+        }
+        
+        /* Add Portainer's signature pixelated dotted pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 16px 16px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
         }
         
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             max-width: 600px;
             width: 90%;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
         
         .question {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             line-height: 1.4;
+            color: #1a1a2e;
         }
         
         .answers {
@@ -40,52 +61,74 @@
         }
         
         .answer-btn {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
             padding: 1rem;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            color: #1a1a2e;
+            font-weight: 500;
         }
         
         .answer-btn:hover {
-            background: #e9ecef;
-            border-color: #13bef9;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            border-color: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
         }
         
         .progress {
-            background: #e9ecef;
+            background: #e2e8f0;
             border-radius: 10px;
             height: 8px;
             margin-bottom: 2rem;
+            overflow: hidden;
         }
         
         .progress-bar {
-            background: #13bef9;
+            background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
             height: 100%;
             border-radius: 10px;
-            transition: width 0.3s;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
         }
         
         .start-screen h1 {
-            color: #13bef9;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .start-screen p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
         
         .start-btn, .restart-btn {
-            background: #13bef9;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
             color: white;
             border: none;
             padding: 1rem 2rem;
             border-radius: 12px;
             font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
         }
         
         .start-btn:hover, .restart-btn:hover {
-            background: #0ea5e9;
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
         }
         
         .results {
@@ -94,28 +137,65 @@
         
         .score {
             font-size: 3rem;
-            color: #13bef9;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin: 1rem 0;
+            font-weight: 700;
         }
         
         .share-btn {
-            background: #28a745;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
             padding: 1rem 2rem;
             border-radius: 12px;
             font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
             margin: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .share-btn:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
         }
         
         .name-input {
             padding: 1rem;
-            border: 2px solid #e9ecef;
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
             font-size: 1.1rem;
             margin-bottom: 1rem;
             width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .name-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+        
+        .question-counter {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        #score-message {
+            color: #64748b;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
