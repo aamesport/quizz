@@ -1,55 +1,105 @@
 {
-  "title": "Team Quiz",
+  "title": "General Knowledge Quiz",
   "questions": [
     {
-      "question": "What does 'QA' stand for in software development?",
-      "answers": ["Quality Assurance", "Quick Analysis", "Question Authority", "Quantum Algorithm"],
-      "correct": 0
+      "question": "What is the capital city of Australia?",
+      "answers": [
+        "Sydney",
+        "Melbourne",
+        "Canberra",
+        "Brisbane"
+      ],
+      "correct": 2
     },
     {
-      "question": "Which testing framework is commonly used with TypeScript?",
-      "answers": ["Mocha", "Jest", "Playwright", "All of the above"],
+      "question": "Which is the largest ocean in the world?",
+      "answers": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean"
+      ],
       "correct": 3
     },
     {
-      "question": "What is Docker primarily used for?",
-      "answers": ["Database management", "Containerization", "Code compilation", "Network security"],
+      "question": "Who is the current Prime Minister of the United Kingdom?",
+      "answers": [
+        "Rishi Sunak",
+        "Keir Starmer",
+        "Boris Johnson",
+        "Theresa May"
+      ],
       "correct": 1
     },
     {
-      "question": "In Playwright, what method is used to click an element?",
-      "answers": ["element.tap()", "element.click()", "element.press()", "element.select()"],
-      "correct": 1
+      "question": "What is the name of the light tank recently unveiled by India's Defence Research and Development Organisation (DRDO)?",
+      "answers": [
+        "Arjun",
+        "Vijayanta",
+        "Zorawar",
+        "T-90"
+      ],
+      "correct": 2
     },
     {
-      "question": "What does 'CI/CD' stand for?",
-      "answers": ["Continuous Integration/Continuous Deployment", "Code Integration/Code Deployment", "Central Intelligence/Central Data", "Custom Integration/Custom Development"],
-      "correct": 0
-    },
-    {
-      "question": "Which HTTP status code indicates 'Not Found'?",
-      "answers": ["200", "404", "500", "302"],
-      "correct": 1
-    },
-    {
-      "question": "What is the main purpose of Portainer?",
-      "answers": ["Code editing", "Docker management", "Database administration", "File sharing"],
-      "correct": 1
-    },
-    {
-      "question": "In TypeScript, what symbol is used for optional properties?",
-      "answers": ["*", "?", "!", "#"],
-      "correct": 1
-    },
-    {
-      "question": "What does 'API' stand for?",
-      "answers": ["Advanced Programming Interface", "Application Programming Interface", "Automated Programming Integration", "Abstract Programming Implementation"],
-      "correct": 1
-    },
-    {
-      "question": "Which is NOT a valid CSS display property?",
-      "answers": ["flex", "grid", "inline", "stack"],
+      "question": "What word was declared the Oxford Word of the Year 2024?",
+      "answers": [
+        "Rizz",
+        "Romantasy",
+        "Slop",
+        "Brain rot"
+      ],
       "correct": 3
+    },
+    {
+      "question": "The first underwater metro in India was started in which city?",
+      "answers": [
+        "Mumbai",
+        "Kolkata",
+        "Chennai",
+        "Delhi"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which country recently introduced new 3D holographic banknotes?",
+      "answers": [
+        "China",
+        "United States",
+        "Japan",
+        "Germany"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which South Asian country's interim government recently appointed Muhammad Yunus as its chief adviser?",
+      "answers": [
+        "Pakistan",
+        "Nepal",
+        "Bangladesh",
+        "Sri Lanka"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which country became the 10th member of the Shanghai Cooperation Organisation (SCO)?",
+      "answers": [
+        "Iran",
+        "Turkey",
+        "Afghanistan",
+        "Belarus"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "A major fire at an oil refinery in Sochi, Russia, following a drone attack, led to the temporary closure of which major international airport?",
+      "answers": [
+        "Sochi International Airport",
+        "Sheremetyevo International Airport",
+        "Domodedovo International Airport",
+        "Pulkovo Airport"
+      ],
+      "correct": 0
     }
   ]
-} 
+}
