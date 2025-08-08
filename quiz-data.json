@@ -1,105 +1,105 @@
 {
-  "title": "General Knowledge Quiz",
+  "title": "Global General Knowledge Quiz",
   "questions": [
     {
-      "question": "What is the capital city of Australia?",
+      "question": "Which of these is a famous harvest festival celebrated in the state of Tamil Nadu, India?",
       "answers": [
-        "Sydney",
-        "Melbourne",
-        "Canberra",
-        "Brisbane"
+        "Durga Puja",
+        "Onam",
+        "Pongal",
+        "Navaratri"
       ],
       "correct": 2
     },
     {
-      "question": "Which is the largest ocean in the world?",
+      "question": "What is the name of the highest mountain in New Zealand?",
       "answers": [
-        "Atlantic Ocean",
-        "Indian Ocean",
-        "Arctic Ocean",
-        "Pacific Ocean"
+        "Mount Taranaki",
+        "Mount Ruapehu",
+        "Aoraki / Mount Cook",
+        "Mount Tasman"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which river flows through the heart of Paris, France?",
+      "answers": [
+        "Loire",
+        "Rhône",
+        "Garonne",
+        "Seine"
       ],
       "correct": 3
     },
     {
-      "question": "Who is the current Prime Minister of the United Kingdom?",
+      "question": "What is the traditional Māori greeting that involves pressing noses and foreheads together?",
       "answers": [
-        "Rishi Sunak",
-        "Keir Starmer",
-        "Boris Johnson",
-        "Theresa May"
-      ],
-      "correct": 1
-    },
-    {
-      "question": "What is the name of the light tank recently unveiled by India's Defence Research and Development Organisation (DRDO)?",
-      "answers": [
-        "Arjun",
-        "Vijayanta",
-        "Zorawar",
-        "T-90"
-      ],
-      "correct": 2
-    },
-    {
-      "question": "What word was declared the Oxford Word of the Year 2024?",
-      "answers": [
-        "Rizz",
-        "Romantasy",
-        "Slop",
-        "Brain rot"
+        "Kia Ora",
+        "Pōwhiri",
+        "Karakia",
+        "Hongi"
       ],
       "correct": 3
     },
     {
-      "question": "The first underwater metro in India was started in which city?",
+      "question": "Which ancient Indian city is home to the 'Taj Mahal' and the 'Agra Fort'?",
       "answers": [
-        "Mumbai",
-        "Kolkata",
-        "Chennai",
-        "Delhi"
-      ],
-      "correct": 1
-    },
-    {
-      "question": "Which country recently introduced new 3D holographic banknotes?",
-      "answers": [
-        "China",
-        "United States",
-        "Japan",
-        "Germany"
+        "Delhi",
+        "Varanasi",
+        "Agra",
+        "Jaipur"
       ],
       "correct": 2
     },
     {
-      "question": "Which South Asian country's interim government recently appointed Muhammad Yunus as its chief adviser?",
+      "question": "Which French delicacy consists of snails cooked in garlic and parsley butter?",
       "answers": [
-        "Pakistan",
-        "Nepal",
-        "Bangladesh",
-        "Sri Lanka"
+        "Crème brûlée",
+        "Soufflé",
+        "Escargots",
+        "Croissant"
       ],
       "correct": 2
     },
     {
-      "question": "Which country became the 10th member of the Shanghai Cooperation Organisation (SCO)?",
+      "question": "The national rugby team of New Zealand, famous for their pre-match 'haka' dance, is known as what?",
       "answers": [
-        "Iran",
-        "Turkey",
-        "Afghanistan",
-        "Belarus"
+        "The Wallabies",
+        "The Springboks",
+        "The All Blacks",
+        "The Lions"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What is the name of the iconic iron lattice tower located on the Champ de Mars in Paris?",
+      "answers": [
+        "Arc de Triomphe",
+        "Notre-Dame",
+        "Eiffel Tower",
+        "Sacré-Cœur"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "In which Indian state would you find the world's largest single-roofed railway station?",
+      "answers": [
+        "Maharashtra",
+        "Karnataka",
+        "West Bengal",
+        "Kerala"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What is the name of the famous street in Paris, often considered one of the most beautiful avenues in the world?",
+      "answers": [
+        "Rue de Rivoli",
+        "Avenue Montaigne",
+        "Boulevard Saint-Germain",
+        "Champs-Élysées"
       ],
       "correct": 3
-    },
-    {
-      "question": "A major fire at an oil refinery in Sochi, Russia, following a drone attack, led to the temporary closure of which major international airport?",
-      "answers": [
-        "Sochi International Airport",
-        "Sheremetyevo International Airport",
-        "Domodedovo International Airport",
-        "Pulkovo Airport"
-      ],
-      "correct": 0
     }
   ]
 }
