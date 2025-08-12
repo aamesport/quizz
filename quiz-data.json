@@ -1,103 +1,103 @@
 {
-  "title": "Global General Knowledge Quiz",
+  "title": "Current Events Quiz (Past 8 Weeks)",
   "questions": [
     {
-      "question": "Which of these is a famous harvest festival celebrated in the state of Tamil Nadu, India?",
+      "question": "Which American city did President Trump deploy the National Guard to in response to a 'crime emergency'?",
       "answers": [
-        "Durga Puja",
-        "Onam",
-        "Pongal",
-        "Navaratri"
-      ],
-      "correct": 2
-    },
-    {
-      "question": "What is the name of the highest mountain in New Zealand?",
-      "answers": [
-        "Mount Taranaki",
-        "Mount Ruapehu",
-        "Aoraki / Mount Cook",
-        "Mount Tasman"
-      ],
-      "correct": 2
-    },
-    {
-      "question": "Which river flows through the heart of Paris, France?",
-      "answers": [
-        "Loire",
-        "Rhône",
-        "Garonne",
-        "Seine"
+        "New York City",
+        "Los Angeles",
+        "Chicago",
+        "Washington, D.C."
       ],
       "correct": 3
     },
     {
-      "question": "What is the traditional Māori greeting that involves pressing noses and foreheads together?",
+      "question": "What is the name of the comet that became the third known interstellar object to enter our solar system, as reported on July 1, 2025?",
       "answers": [
-        "Kia Ora",
-        "Pōwhiri",
-        "Karakia",
-        "Hongi"
+        "Comet Halley",
+        "2I/Borisov",
+        "3I/ATLAS",
+        "Oumuamua"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What is the name of the new AI platform developed by scientists that can design custom proteins to target and destroy cancer cells?",
+      "answers": [
+        "Onco-AI",
+        "Bio-Core",
+        "Cell-Slayer",
+        "T-AI"
       ],
       "correct": 3
     },
     {
-      "question": "Which ancient Indian city is home to the 'Taj Mahal' and the 'Agra Fort'?",
+      "question": "A new study revealed that climate change could disrupt the habitat of wild vanilla species. This study was published in which journal?",
       "answers": [
-        "Delhi",
-        "Varanasi",
-        "Agra",
-        "Jaipur"
+        "Nature Climate Change",
+        "Science",
+        "Frontiers in Plant Science",
+        "The Lancet"
       ],
       "correct": 2
     },
     {
-      "question": "Which French delicacy consists of snails cooked in garlic and parsley butter?",
+      "question": "What is the name of the ancient sea monster scientists discovered after reexamining a 47-year-old fossil?",
       "answers": [
-        "Crème brûlée",
-        "Soufflé",
-        "Escargots",
-        "Croissant"
+        "Mosasaurus",
+        "Ichthyosaur",
+        "Plesiosaur",
+        "Kronosaurus"
       ],
       "correct": 2
     },
     {
-      "question": "The national rugby team of New Zealand, famous for their pre-match 'haka' dance, is known as what?",
+      "question": "In late July, a court ruling blocked the Trump administration's attempt to end which constitutional right?",
       "answers": [
-        "The Wallabies",
-        "The Springboks",
-        "The All Blacks",
-        "The Lions"
+        "Freedom of Speech",
+        "Birthright Citizenship",
+        "Right to Bear Arms",
+        "Trial by Jury"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Scientists at Johns Hopkins University successfully grew a mini human brain. What is a key potential use for this organoid?",
+      "answers": [
+        "To develop new video games",
+        "To power small robots",
+        "To study neurological disorders",
+        "To create new art forms"
       ],
       "correct": 2
     },
     {
-      "question": "What is the name of the iconic iron lattice tower located on the Champ de Mars in Paris?",
+      "question": "Which two countries were involved in a trade truce extension signed by President Trump, preventing tariffs from increasing?",
       "answers": [
-        "Arc de Triomphe",
-        "Notre-Dame",
-        "Eiffel Tower",
-        "Sacré-Cœur"
+        "The U.S. and Japan",
+        "The U.S. and Russia",
+        "The U.S. and China",
+        "The U.S. and Germany"
       ],
       "correct": 2
     },
     {
-      "question": "In which Indian state would you find the world's largest single-roofed railway station?",
+      "question": "Which animal was found to have a remarkable genetic defense against venomous snake bites?",
       "answers": [
-        "Maharashtra",
-        "Karnataka",
-        "West Bengal",
-        "Kerala"
+        "Australian Skinks",
+        "Honey Badgers",
+        "Mongooses",
+        "Possums"
       ],
-      "correct": 2
+      "correct": 0
     },
     {
-      "question": "What is the name of the famous street in Paris, often considered one of the most beautiful avenues in the world?",
+      "question": "What is the name of the upcoming music tour for the iconic band The Who, which is rumored to be their final tour?",
       "answers": [
-        "Rue de Rivoli",
-        "Avenue Montaigne",
-        "Boulevard Saint-Germain",
-        "Champs-Élysées"
+        "The End of the Road Tour",
+        "The Long Goodbye Tour",
+        "The Last Dance Tour",
+        "The Song Is Over Tour"
       ],
       "correct": 3
     }
